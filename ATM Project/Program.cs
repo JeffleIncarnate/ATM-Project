@@ -10,17 +10,35 @@ namespace ATM_Project
     {
         static void Main(string[] args)
         {
-            // Variables
-            string pin = "12345";
-            string cardNumber = "1234 5678 1111 1111";
+            CardGuessMethod();
+
+            PinGuessMethod();
+        }
+
+        public static void CardGuessMethod()
+        {
+            string cardNumber = "1111 1111";
             string cardNumberGuess = "";
-            string pinGuess = "";
 
             while (cardNumberGuess != cardNumber)
             {
                 Console.Write("Enter your card Number: ");
                 cardNumberGuess = Console.ReadLine();
+
+                if(cardNumberGuess != cardNumber)
+                {
+                    Console.WriteLine("Card Invalid");
+                    Console.WriteLine("Please Enter a valid Card");
+                    Console.WriteLine(" ");
+                    Console.ReadLine();
+                }
             }
+        }
+
+        public static void PinGuessMethod()
+        {
+            string pin = "12345";
+            string pinGuess = "";
 
             while (pinGuess != pin)
             {
@@ -36,10 +54,10 @@ namespace ATM_Project
                     Console.WriteLine("You have withdrawed " + x + " dollars!");
                     Console.WriteLine("Come back soon!");
                     Console.ReadLine();
-                } else
+                }
+                else
                 {
                     Console.WriteLine("Get lost idiot");
-                    Console.ReadLine();
                 }
             }
         }
