@@ -88,7 +88,7 @@ namespace ATM_Project
             int withDrawnMoney;
 
             Console.Write("How much money would you like to Withdraw: ");
-            withDrawnMoney = Convert.ToInt64(Console.ReadLine());
+            withDrawnMoney = Convert.ToInt32(Console.ReadLine());
 
             if (withDrawnMoney >= 1000)
             {
@@ -101,10 +101,10 @@ namespace ATM_Project
 
         public static void TransferMoney()
         {
-            float transfer;
+            int transfer;
 
             Console.Write("How much money would you like to Transfer: ");
-            transfer = Convert.ToInt64(Console.ReadLine());
+            transfer = Convert.ToInt32(Console.ReadLine());
 
             if (transfer >= 1000)
             {
