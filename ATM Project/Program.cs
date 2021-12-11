@@ -13,8 +13,6 @@ namespace ATM_Project
             CardGuessMethod();
 
             PinGuessMethod();
-
-
         }
 
         public static void CardGuessMethod()
@@ -78,7 +76,7 @@ namespace ATM_Project
                 }
                 else
                 {
-                    Console.WriteLine("Get lost idiot");
+                    Console.WriteLine("Error 404: Wrong Pin");
                 }
             }
         }
@@ -93,9 +91,12 @@ namespace ATM_Project
             if (withDrawnMoney >= 1000)
             {
                 Console.WriteLine("Error 20182: Invalid ammount withdraw has to be less that $1000");
-            }else
+                WithdrawMoney();
+            }
+            else
             {
                 Console.WriteLine("You have Withdrawn " + withDrawnMoney + " dollars!");
+                MethodsBank();
             }
         }
 
@@ -107,6 +108,10 @@ namespace ATM_Project
             transfer = Convert.ToInt32(Console.ReadLine());
 
             if (transfer >= 1000)
+            {
+                Console.WriteLine("Error 20182: Invalid ammount transfer has to be less that $1000");
+                TransferMoney();
+            } else
             {
                 Console.WriteLine("You have Transfered " + transfer + " dollars!");
                 MethodsBank();
