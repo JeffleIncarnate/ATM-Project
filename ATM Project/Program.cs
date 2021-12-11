@@ -13,6 +13,8 @@ namespace ATM_Project
             CardGuessMethod();
 
             PinGuessMethod();
+
+
         }
 
         public static void CardGuessMethod()
@@ -29,9 +31,34 @@ namespace ATM_Project
                 {
                     Console.WriteLine("Card Invalid");
                     Console.WriteLine("Please Enter a valid Card");
-                    Console.WriteLine(" ");
                     Console.ReadLine();
                 }
+            }
+        }
+
+        public static void MethodsBank()
+        {
+            string functions;
+
+            Console.WriteLine("What would you like to do?");
+            Console.WriteLine("Withdraw, Log out, Transfer into your account");
+            Console.Write("Please write here: ");
+            functions = Console.ReadLine();
+
+            if (functions == "Withdraw")
+            {
+                WithdrawMoney();
+            }
+            else if (functions == "Log out")
+            {
+                Console.WriteLine("Thanks for Banking with us.");
+                Console.WriteLine("Press enter to log out");
+                Console.ReadLine();
+                CardGuessMethod();
+            }
+            else if (functions == "Transfer")
+            {
+                TransferMoney();
             }
         }
 
@@ -47,18 +74,42 @@ namespace ATM_Project
 
                 if (pinGuess == pin)
                 {
-                    string x;
-                    Console.Write("How much money would you like to withdraw: ");
-                    x = Console.ReadLine();
-
-                    Console.WriteLine("You have withdrawed " + x + " dollars!");
-                    Console.WriteLine("Come back soon!");
-                    Console.ReadLine();
+                    MethodsBank();
                 }
                 else
                 {
                     Console.WriteLine("Get lost idiot");
                 }
+            }
+        }
+
+        public static void WithdrawMoney()
+        {
+            int withDrawnMoney;
+
+            Console.Write("How much money would you like to Withdraw: ");
+            withDrawnMoney = Convert.ToInt64(Console.ReadLine());
+
+            if (withDrawnMoney >= 1000)
+            {
+                Console.WriteLine("Error 20182: Invalid ammount withdraw has to be less that $1000");
+            }else
+            {
+                Console.WriteLine("You have Withdrawn " + withDrawnMoney + " dollars!");
+            }
+        }
+
+        public static void TransferMoney()
+        {
+            float transfer;
+
+            Console.Write("How much money would you like to Transfer: ");
+            transfer = Convert.ToInt64(Console.ReadLine());
+
+            if (transfer >= 1000)
+            {
+                Console.WriteLine("You have Transfered " + transfer + " dollars!");
+                MethodsBank();
             }
         }
     }
