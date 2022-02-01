@@ -34,6 +34,42 @@ namespace ATM_Project
             }
         }
 
+        public static void PinGuessMethod()
+        {
+            string pin = "12345";
+            string pinGuess = "";
+
+            while (pinGuess != pin)
+            {
+                Console.Write("Enter your Pin Number: ");
+                pinGuess = Console.ReadLine();
+
+                if (pinGuess == pin)
+                {
+                    MethodsBank();
+                }
+                else if (pinGuess != pin)
+                {
+                    for (int pinGuesses = 0; pinGuesses < 10; pinGuesses++)
+                    {
+                        Console.Write("Enter your Pin Number: ");
+                        pinGuess = Console.ReadLine();
+
+                        if (pinGuess == pin)
+                        {
+                            MethodsBank();
+                        } else if (pinGuess != pin)
+                        {
+                            Console.WriteLine("You have been locked out");
+                            Console.ReadLine();
+
+                            Environment.Exit(0);
+                        }
+                    }
+                }
+            }
+        }
+
         public static void MethodsBank()
         {
             string functions;
@@ -57,27 +93,6 @@ namespace ATM_Project
             else if (functions == "Transfer")
             {
                 TransferMoney();
-            }
-        }
-
-        public static void PinGuessMethod()
-        {
-            string pin = "12345";
-            string pinGuess = "";
-
-            while (pinGuess != pin)
-            {
-                Console.Write("Enter your Pin Number: ");
-                pinGuess = Console.ReadLine();
-
-                if (pinGuess == pin)
-                {
-                    MethodsBank();
-                }
-                else
-                {
-                    Console.WriteLine("Error 404: Wrong Pin");
-                }
             }
         }
 
