@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -75,7 +76,7 @@ namespace ATM_Project
             string functions;
 
             Console.WriteLine("What would you like to do?");
-            Console.WriteLine("Withdraw, Log out, Transfer into your account");
+            Console.WriteLine("Withdraw, Log out, Transfer, Balance or History");
             Console.Write("Please write here: ");
             functions = Console.ReadLine();
 
@@ -85,14 +86,28 @@ namespace ATM_Project
             }
             else if (functions == "Log out")
             {
-                Console.WriteLine("Thanks for Banking with us.");
+                Console.WriteLine("Thanks for Banking with us");
                 Console.WriteLine("Press enter to log out");
                 Console.ReadLine();
-                CardGuessMethod();
+                Environment.Exit(0);
             }
             else if (functions == "Transfer")
             {
                 TransferMoney();
+            }
+            else if (functions == "Balance")
+            {
+                Balance();
+            }
+            else if (functions == "History")
+            {
+                History();
+            }
+
+            if (functions == null)
+            {
+                Console.WriteLine("Please Select a function");
+                MethodsBank();
             }
         }
 
@@ -132,5 +147,38 @@ namespace ATM_Project
                 MethodsBank();
             }
         }
+
+        public static void Balance()
+        {
+            Console.WriteLine("hello");
+        }
+
+        public static void History()
+        {
+            String line;
+
+            try 
+            {
+                StreamReader sr = new StreamReader("C:\\Users\\dhruv\\Desktop\\Visual Studio 2022\\ATM Project\\History.txt");
+                line = sr.ReadLine();
+
+                while (line != null)
+                {
+                    Console.WriteLine(line);
+                    line = sr.ReadLine();
+                }
+                sr.Close();
+                Console.ReadLine();
+            }   
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception " + e.Message);
+            }
+            finally
+            {
+                Console.WriteLine("Executing finally block");
+            }
+        }
+
     }
 }
