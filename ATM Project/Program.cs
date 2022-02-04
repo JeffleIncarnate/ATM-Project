@@ -84,13 +84,6 @@ namespace ATM_Project
             {
                 WithdrawMoney();
             }
-            else if (functions == "Log out")
-            {
-                Console.WriteLine("Thanks for Banking with us");
-                Console.WriteLine("Press enter to log out");
-                Console.ReadLine();
-                Environment.Exit(0);
-            }
             else if (functions == "Transfer")
             {
                 TransferMoney();
@@ -103,11 +96,12 @@ namespace ATM_Project
             {
                 History();
             }
-
-            if (functions == null)
+            else if (functions == "Log out")
             {
-                Console.WriteLine("Please Select a function");
-                MethodsBank();
+                Console.WriteLine("Thanks for Banking with us");
+                Console.WriteLine("Press enter to log out");
+                Console.ReadLine();
+                Environment.Exit(0);
             }
         }
 
