@@ -148,23 +148,6 @@ namespace ATM_Project
             {
                 Console.WriteLine("You have Transfered " + transfer + " dollars!");
                 MethodsBank();
-
-                try
-                {
-                    StreamWriter sw = new StreamWriter("C:\\Users\\dhruv\\Desktop\\Visual Studio 2022\\ATM Project\\History.txt");
-
-                    sw.WriteLine("You Transfered " + transfer + " into your account");
-
-                    sw.Close();
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine("Exception: " + e.Message);
-                }
-                finally
-                {
-                    Console.WriteLine("Executing finally block.");
-                }
             }
         }
 
