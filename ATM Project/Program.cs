@@ -75,33 +75,42 @@ namespace ATM_Project
         {
             string functions;
 
-            Console.WriteLine("What would you like to do?");
-            Console.WriteLine("Withdraw, Log out, Transfer, Balance or History");
-            Console.Write("Please write here: ");
-            functions = Console.ReadLine();
+            string[] lines = { "Withdraw", "Transfer", "Balance", "History", "Log out" };
 
-            if (functions == "Withdraw")
+            while (true)
             {
-                WithdrawMoney();
-            }
-            else if (functions == "Transfer")
-            {
-                TransferMoney();
-            }
-            else if (functions == "Balance")
-            {
-                Balance();
-            }
-            else if (functions == "History")
-            {
-                History();
-            }
-            else if (functions == "Log out")
-            {
-                Console.WriteLine("Thanks for Banking with us");
-                Console.WriteLine("Press enter to log out");
-                Console.ReadLine();
-                Environment.Exit(0);
+                Console.WriteLine("What would you like to do?");
+                Console.WriteLine("Withdraw, Transfer, Balance, History or Log out");
+                Console.Write("Please write here: ");
+                functions = Console.ReadLine();
+
+                if (functions == "Withdraw")
+                {
+                    WithdrawMoney();
+                }
+                else if (functions == "Withdraw")
+                {
+                    TransferMoney();
+                }
+                else if (functions == "Balance")
+                {
+                    Balance();
+                }
+                else if (functions == "History")
+                {
+                    History();
+                }
+                else if (functions == "Log out")
+                {
+                    Console.WriteLine("Thanks for Banking with us");
+                    Console.WriteLine("Press enter to log out.");
+                    Console.ReadLine();
+                    Environment.Exit(0);
+                }
+                else
+                {
+                    Console.WriteLine("Please write one of the options.");
+                }
             }
         }
 
@@ -163,7 +172,9 @@ namespace ATM_Project
         {
             Random random = new Random();
 
-            Console.WriteLine("You have $" + random.Next(1000, 10000) + "!");
+            int balanceInt = random.Next(1000, 10000);
+
+            Console.WriteLine("You have $" + balanceInt + "!");
 
             Console.ReadLine();
             MethodsBank();
