@@ -11,9 +11,42 @@ namespace ATM_Project
     {
         static void Main(string[] args)
         {
-            CardGuessMethod();
+            // Start the Program
+            CardNewMethod();
 
             PinGuessMethod();
+        }
+
+        public static void CardNewMethod()
+        {
+            // Classes Instatntiate
+            Cards card = new Cards();
+
+            Console.Write("Existing account or New Account: ");
+            string newAccOrNew = Console.ReadLine();
+
+            if (newAccOrNew == "New Account")
+            {
+                Console.Write("Please enter your new Card Number: ");
+                card.Card1 = Console.ReadLine();
+
+                Console.Write("Please enter your new Pin: ");
+                card.Pin1 = Console.ReadLine();
+
+                Console.WriteLine("Your Account has been Created");
+                Console.WriteLine(card.GetFullAccount());
+                Console.ReadLine();
+
+                CardGuessMethod();
+            }
+            else if (newAccOrNew == "Existing Accoount")
+            {
+                CardGuessMethod();
+            }
+            else
+            {
+                Console.WriteLine("Choose one of the Damned optiions");
+            }
         }
 
         public static void CardGuessMethod()
