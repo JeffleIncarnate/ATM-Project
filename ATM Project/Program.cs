@@ -39,7 +39,7 @@ namespace ATM_Project
 
                 CardGuessMethod();
             }
-            else if (newAccOrNew == "Existing Accoount")
+            else if (newAccOrNew == "Existing Account")
             {
                 CardGuessMethod();
             }
@@ -122,7 +122,7 @@ namespace ATM_Project
                     WithdrawMoney();
                     break;
                 }
-                else if (functions == "Withdraw")
+                else if (functions == "Transfer")
                 {
                     TransferMoney();
                     break;
@@ -190,11 +190,9 @@ namespace ATM_Project
 
         public static void Balance()
         {
-            Random random = new Random();
+            Balance balance = new Balance();
 
-            int balanceInt = random.Next(1000, 10000);
-
-            Console.WriteLine("You have $" + balanceInt + "!");
+            Console.WriteLine("You have $" + balance.balance + "!");
 
             Console.ReadLine();
             MethodsBank();
@@ -224,7 +222,7 @@ namespace ATM_Project
             finally
             {
                 Console.WriteLine("Executing finally block");
-            }
+            } 
         }
     }
 }
