@@ -15,7 +15,7 @@ namespace ATM_Project
             Random random = new Random();
 
             int balance = random.Next(1000, 10000);
-            return balance ; 
+            return balance; 
         }
     }
 }

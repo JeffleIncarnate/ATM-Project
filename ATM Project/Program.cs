@@ -25,41 +25,54 @@ namespace ATM_Project
             Console.Write("Existing account or New Account: ");
             string newAccOrNew = Console.ReadLine();
 
-            if (newAccOrNew == "New Account")
+            while (true)
             {
-                Console.Write("Please enter your new Card Number: ");
-                card.Card1 = Console.ReadLine();
+                if (newAccOrNew == "New Account")
+                {
+                    Console.Write("Please enter your new Card Number: ");
+                    card.Card1 = Console.ReadLine();
 
-                Console.Write("Please enter your new Pin: ");
-                card.Pin1 = Console.ReadLine();
+                    Console.Write("Please enter your new Pin: ");
+                    card.Pin1 = Console.ReadLine();
 
-                Console.WriteLine("Your Account has been Created");
-                Console.WriteLine(card.GetFullAccount());
-                Console.ReadLine();
+                    Console.WriteLine("Your Account has been Created");
+                    Console.WriteLine(card.GetFullAccount());
+                    Console.ReadLine();
 
-                CardGuessMethod();
-            }
-            else if (newAccOrNew == "Existing Account")
-            {
-                CardGuessMethod();
-            }
-            else
-            {
-                Console.WriteLine("Choose one of the Damned optiions");
+                    CardGuessMethod();
+                }
+                else if (newAccOrNew == "Existing Account")
+                {
+                    CardGuessMethod();
+                }
+                else
+                {
+                    Console.WriteLine("Choose one of the Damned optiions");
+                }
             }
         }
 
         public static void CardGuessMethod()
         {
+            Cards card = new Cards();
+
             string cardNumber = "1111 1111";
             string cardNumberGuess = "";
 
-            while (cardNumberGuess != cardNumber)
+            while (true)
             {
                 Console.Write("Enter your card Number: ");
                 cardNumberGuess = Console.ReadLine();
 
-                if(cardNumberGuess != cardNumber)
+                if(cardNumberGuess == cardNumber)
+                {
+                    PinGuessMethod();
+                }
+                else if (cardNumberGuess == card.Card1)
+                {
+                    PinGuessMethod();
+                }
+                else
                 {
                     Console.WriteLine("Card Invalid");
                     Console.WriteLine("Please Enter a valid Card");
