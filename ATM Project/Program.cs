@@ -87,18 +87,22 @@ namespace ATM_Project
                 if (functions == "Withdraw")
                 {
                     WithdrawMoney();
+                    break;
                 }
                 else if (functions == "Withdraw")
                 {
                     TransferMoney();
+                    break;
                 }
                 else if (functions == "Balance")
                 {
                     Balance();
+                    break;
                 }
                 else if (functions == "History")
                 {
                     History();
+                    break;
                 }
                 else if (functions == "Log out")
                 {
