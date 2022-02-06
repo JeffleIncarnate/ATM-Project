@@ -57,7 +57,7 @@ namespace ATM_Project
             Cards card = new Cards();
 
             string cardNumber = "1111 1111";
-            string cardNumberGuess = "";
+            string cardNumberGuess;
 
             while (true)
             {

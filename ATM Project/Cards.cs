@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ATM_Project
 {
-    public class Cards
+    internal class Cards
     {
         public string Card1 { get; set; }
         public string Pin1 { get; set; }
