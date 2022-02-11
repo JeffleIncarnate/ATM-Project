@@ -19,12 +19,13 @@ namespace ATM_Project
 
         public static void CardNewMethod()
         {
-            // Classes Instatntiate
+            // Instattiates the class
             Cards card = new Cards();
 
             Console.Write("Existing account or New Account: ");
             string newAccOrNew = Console.ReadLine();
 
+            // This is a loop that iterates tnrough itself to make sure no funny buisness happens
             while (true)
             {
                 if (newAccOrNew == "New Account")
@@ -47,17 +48,21 @@ namespace ATM_Project
                 }
                 else
                 {
-                    Console.WriteLine("Choose one of the Damned optiions");
+                    Console.WriteLine("Choose one of the options");
                 }
             }
         }
 
+        // Card Guess Method, this gives you access to each Card
         public static void CardGuessMethod()
         {
+            // Instantiating Class
             Cards card = new Cards();
 
             string cardNumber = "1111 1111";
             string cardNumberGuess;
+
+            string cardNumberGuess1 = card.Card1;
 
             while (true)
             {
@@ -68,7 +73,7 @@ namespace ATM_Project
                 {
                     PinGuessMethod();
                 }
-                else if (cardNumberGuess == card.Card1)
+                else if (cardNumberGuess == cardNumberGuess1)
                 {
                     PinGuessMethod();
                 }
@@ -81,6 +86,7 @@ namespace ATM_Project
             }
         }
 
+        // Pin guess makes sure you know the pin before you are given access
         public static void PinGuessMethod()
         {
             string pin = "12345";
@@ -130,7 +136,7 @@ namespace ATM_Project
                 Console.Write("Please write here: ");
                 functions = Console.ReadLine();
 
-                if (functions == "Withdraw")
+                if (functions == "Withdraw" && functions == "withdraw")
                 {
                     WithdrawMoney();
                     break;
