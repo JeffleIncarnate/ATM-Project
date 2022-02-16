@@ -19,11 +19,11 @@ namespace ATM_Project
 
         public static void CardNewMethod()
         {
-            // Instattiates the class
-            Cards card = new Cards();
-
             Console.Write("Existing account or New Account: ");
             string newAccOrNew = Console.ReadLine();
+
+            string newAcc;
+            string newPin;
 
             // This is a loop that iterates tnrough itself to make sure no funny buisness happens
             while (true)
@@ -31,13 +31,14 @@ namespace ATM_Project
                 if (newAccOrNew == "New Account")
                 {
                     Console.Write("Please enter your new Card Number: ");
-                    card.Card1 = Console.ReadLine();
+                    newAcc = Console.ReadLine();
 
                     Console.Write("Please enter your new Pin: ");
-                    card.Pin1 = Console.ReadLine();
+                    newPin = Console.ReadLine();
 
                     Console.WriteLine("Your Account has been Created");
-                    Console.WriteLine(card.GetFullAccount());
+                    Console.WriteLine("Your account number is: " + newAcc);
+                    Console.WriteLine("Your Pin number is " + newPin);
                     Console.ReadLine();
 
                     CardGuessMethod();
@@ -56,13 +57,8 @@ namespace ATM_Project
         // Card Guess Method, this gives you access to each Card
         public static void CardGuessMethod()
         {
-            // Instantiating Class
-            Cards card = new Cards();
-
             string cardNumber = "1111 1111";
             string cardNumberGuess;
-
-            string cardNumberGuess1 = card.Card1;
 
             while (true)
             {
@@ -73,7 +69,7 @@ namespace ATM_Project
                 {
                     PinGuessMethod();
                 }
-                else if (cardNumberGuess == cardNumberGuess1)
+                if (cardNumberGuess == cardNumber)
                 {
                     PinGuessMethod();
                 }
@@ -136,27 +132,27 @@ namespace ATM_Project
                 Console.Write("Please write here: ");
                 functions = Console.ReadLine();
 
-                if (functions == "Withdraw" && functions == "withdraw")
+                if (functions == "Withdraw" || functions == "withdraw" || functions == "with draw")
                 {
                     WithdrawMoney();
                     break;
                 }
-                else if (functions == "Transfer")
+                else if (functions == "Transfer" || functions == "transfer")
                 {
                     TransferMoney();
                     break;
                 }
-                else if (functions == "Balance")
+                else if (functions == "Balance" || functions == "balance")
                 {
                     Balance();
                     break;
                 }
-                else if (functions == "History")
+                else if (functions == "History" || functions == "history")
                 {
                     History();
                     break;
                 }
-                else if (functions == "Log out")
+                else if (functions == "Log out" || functions == "log out" || functions == "logout")
                 {
                     Console.WriteLine("Thanks for Banking with us");
                     Console.WriteLine("Press enter to log out.");
