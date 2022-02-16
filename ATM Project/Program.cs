@@ -11,8 +11,9 @@ namespace ATM_Project
     {
         static void Main(string[] args)
         {
+
             // Start the Program
-            CardNewMethod();;
+            CardNewMethod();
         }
 
         // Card New Guess method
@@ -28,7 +29,7 @@ namespace ATM_Project
             // This is a loop that iterates tnrough itself to make sure no funny buisness happens
             while (true)
             {
-                if (newAccOrNew == "New Account")
+                if (newAccOrNew == "New Account" || newAccOrNew == "New account" || newAccOrNew == "new Account" || newAccOrNew == "new account")
                 {
                     Console.Write("Please enter your new Card Number: ");
                     newAcc = Console.ReadLine();
@@ -43,7 +44,7 @@ namespace ATM_Project
 
                     CardGuessMethod(newAcc, newPin);
                 }
-                else if (newAccOrNew == "Existing Account")
+                else if (newAccOrNew == "Existing Account" || newAccOrNew == "Exisiting account"  || newAccOrNew == "existing Account" || newAccOrNew == "new account")
                 {
                     CardGuessMethod(newAcc, newPin);
                 }
@@ -89,31 +90,32 @@ namespace ATM_Project
             string pinGuess = "";
 
             string[] gueses = { "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten" };
-
-            while (true)
+            
+            foreach (string guess in gueses)
             {
-                foreach (string guess in gueses)
+                while (pinGuess != pin || pinGuess != bString)
                 {
                     Console.Write("Please enter your pin: ");
                     pinGuess = Console.ReadLine();
 
-                    if(pinGuess == pin)
+                    if (pinGuess == pin)
                     {
                         MethodsBank();
+                        break;
                     }
                     else if (pinGuess == bString)
                     {
                         MethodsBank();
+                        break;
                     }
                     else
                     {
                         Console.WriteLine("Please enter your pin.");
                     }
-
-                    Console.WriteLine("You've been locked out");
-                    Console.WriteLine("Quit Now.");
-                    Environment.Exit(0); 
                 }
+                Console.WriteLine("You've been locked out");
+                Console.WriteLine("Quit Now.");
+                Environment.Exit(0);
             }
         }
 
@@ -142,7 +144,7 @@ namespace ATM_Project
                 }
                 else if (functions == "Balance" || functions == "balance")
                 {
-                    Balance();
+                    BalancerEquation();
                     break;
                 }
                 else if (functions == "History" || functions == "history")
@@ -201,11 +203,16 @@ namespace ATM_Project
             }
         }
 
-        public static void Balance()
+        public static void BalancerEquation()
         {
-            Balance balance = new Balance();
+            Random rnd = new Random();
+            int num = rnd.Next(1000, 10000);
+            Balance(num);
+        }
 
-            Console.WriteLine("You have $" + balance.balance + "!");
+        public static void Balance(int balacerString)
+        {
+            Console.WriteLine("You have $" + balacerString + "!");
 
             Console.ReadLine();
             MethodsBank();
