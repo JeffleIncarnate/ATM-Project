@@ -12,18 +12,18 @@ namespace ATM_Project
         static void Main(string[] args)
         {
             // Start the Program
-            CardNewMethod();
-
-            PinGuessMethod();
+            CardNewMethod();;
         }
 
+        // Card New Guess method
         public static void CardNewMethod()
         {
             Console.Write("Existing account or New Account: ");
             string newAccOrNew = Console.ReadLine();
 
-            string newAcc;
-            string newPin;
+            // New account variables
+            string newAcc = "";
+            string newPin = "";
 
             // This is a loop that iterates tnrough itself to make sure no funny buisness happens
             while (true)
@@ -41,11 +41,11 @@ namespace ATM_Project
                     Console.WriteLine("Your Pin number is " + newPin);
                     Console.ReadLine();
 
-                    CardGuessMethod();
+                    CardGuessMethod(newAcc, newPin);
                 }
                 else if (newAccOrNew == "Existing Account")
                 {
-                    CardGuessMethod();
+                    CardGuessMethod(newAcc, newPin);
                 }
                 else
                 {
@@ -55,7 +55,7 @@ namespace ATM_Project
         }
 
         // Card Guess Method, this gives you access to each Card
-        public static void CardGuessMethod()
+        public static void CardGuessMethod(string aString, string bString)
         {
             string cardNumber = "1111 1111";
             string cardNumberGuess;
@@ -67,11 +67,11 @@ namespace ATM_Project
 
                 if(cardNumberGuess == cardNumber)
                 {
-                    PinGuessMethod();
+                    PinGuessMethod(bString);
                 }
-                if (cardNumberGuess == cardNumber)
+                if (cardNumberGuess == aString)
                 {
-                    PinGuessMethod();
+                    PinGuessMethod(bString);
                 }
                 else
                 {
@@ -83,38 +83,36 @@ namespace ATM_Project
         }
 
         // Pin guess makes sure you know the pin before you are given access
-        public static void PinGuessMethod()
+        public static void PinGuessMethod(string bString)
         {
             string pin = "12345";
             string pinGuess = "";
 
-            while (pinGuess != pin)
+            string[] gueses = { "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten" };
+
+            while (true)
             {
-                Console.Write("Enter your Pin Number: ");
-                pinGuess = Console.ReadLine();
+                foreach (string guess in gueses)
+                {
+                    Console.Write("Please enter your pin: ");
+                    pinGuess = Console.ReadLine();
 
-                if (pinGuess == pin)
-                {
-                    MethodsBank();
-                }
-                else if (pinGuess != pin)
-                {
-                    for (int pinGuesses = 0; pinGuesses < 10; pinGuesses++)
+                    if(pinGuess == pin)
                     {
-                        Console.Write("Enter your Pin Number: ");
-                        pinGuess = Console.ReadLine();
-
-                        if (pinGuess == pin)
-                        {
-                            MethodsBank();
-                        } else if (pinGuess != pin)
-                        {
-                            Console.WriteLine("You have been locked out");
-                            Console.ReadLine();
-
-                            Environment.Exit(0);
-                        }
+                        MethodsBank();
                     }
+                    else if (pinGuess == bString)
+                    {
+                        MethodsBank();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please enter your pin.");
+                    }
+
+                    Console.WriteLine("You've been locked out");
+                    Console.WriteLine("Quit Now.");
+                    Environment.Exit(0); 
                 }
             }
         }
