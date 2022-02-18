@@ -146,7 +146,7 @@ namespace ATM_Project
                 }
                 else if (functions == "Balance" || functions == "balance")
                 {
-                    BalancerEquation();
+                    Balance();
                     break;
                 }
                 else if (functions == "History" || functions == "history")
@@ -173,54 +173,60 @@ namespace ATM_Project
         {
             int withDrawnMoney;
 
-            Console.Write("How much money would you like to Withdraw: ");
-            withDrawnMoney = Convert.ToInt32(Console.ReadLine());
+            try
+            {
+                Console.Write("How much money would you like to Withdraw: ");
+                withDrawnMoney = Convert.ToInt32(Console.ReadLine());
 
-            if (withDrawnMoney >= 1000)
+
+                if (withDrawnMoney >= 1000)
+                {
+                    Console.WriteLine("Error 20182: Invalid ammount withdraw has to be less that $1000");
+                    WithdrawMoney();
+                }
+                else
+                {
+                    Console.WriteLine("You have Withdrawn " + withDrawnMoney + " dollars!");
+                    MethodsBank();
+                }
+            } 
+            catch (Exception ex)
             {
-                Console.WriteLine("Error 20182: Invalid ammount withdraw has to be less that $1000");
+                Console.WriteLine(ex.Message);
                 WithdrawMoney();
-            }
-            else
-            {
-                Console.WriteLine("You have Withdrawn " + withDrawnMoney + " dollars!");
-                MethodsBank();
             }
         }
         
         // This method allows you to Transfer money. But also has a limit of $1000
         public static void TransferMoney()
         {
-            int transfer;
-
-            Console.Write("How much money would you like to Transfer: ");
-            transfer = Convert.ToInt32(Console.ReadLine());
-
-            if (transfer >= 1000)
+            while (true)
             {
-                Console.WriteLine("Error 20182: Invalid ammount transfer has to be less that $1000");
-                TransferMoney();
-            } else
-            {
-                Console.WriteLine("You have Transfered " + transfer + " dollars!");
-                MethodsBank();
+                int transfer;
+
+                Console.Write("How much money would you like to Transfer: ");
+                transfer = Convert.ToInt32(Console.ReadLine());
+
+                if (transfer >= 1000)
+                {
+                    Console.WriteLine("Error 20182: Invalid ammount transfer has to be less that $1000");
+                }
+                else
+                {
+                    Console.WriteLine("You have Transfered " + transfer + " dollars!");
+                    MethodsBank();
+                    break;
+                }
             }
         }
-        
-        // This method 
-        public int BalancerEquation()
+
+        // This method calles a class which then gives you a random number between 1000 and 10000
+        public static void Balance()
         {
-            Random rnd = new Random();
-            int num = rnd.Next(1000, 10000);
+            Balance balance = new Balance();
 
-            return num;
-        }
+            Console.WriteLine("You have $" + balance.BalanceFull() + "!");
 
-        public static void Balance(int balacerString)
-        {
-            Console.WriteLine("You have $" + balacerString + "!");
-
-            Console.ReadLine();
             MethodsBank();
         }
 
