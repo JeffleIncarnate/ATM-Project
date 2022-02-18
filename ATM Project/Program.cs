@@ -51,6 +51,7 @@ namespace ATM_Project
                 else
                 {
                     Console.WriteLine("Choose one of the options");
+                    CardNewMethod();
                 }
             }
         }
@@ -119,6 +120,7 @@ namespace ATM_Project
             }
         }
 
+        // This method transfers you to what funtion you want to go to. It's like the house funtion
         public static void MethodsBank()
         {
             string functions;
@@ -166,6 +168,7 @@ namespace ATM_Project
             }
         }
 
+        // This method allows you to withdraw money. But it has a limit of $1000
         public static void WithdrawMoney()
         {
             int withDrawnMoney;
@@ -184,7 +187,8 @@ namespace ATM_Project
                 MethodsBank();
             }
         }
-
+        
+        // This method allows you to Transfer money. But also has a limit of $1000
         public static void TransferMoney()
         {
             int transfer;
@@ -202,12 +206,14 @@ namespace ATM_Project
                 MethodsBank();
             }
         }
-
-        public static void BalancerEquation()
+        
+        // This method 
+        public int BalancerEquation()
         {
             Random rnd = new Random();
             int num = rnd.Next(1000, 10000);
-            Balance(num);
+
+            return num;
         }
 
         public static void Balance(int balacerString)
