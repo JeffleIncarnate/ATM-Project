@@ -11,7 +11,6 @@ namespace ATM_Project
     {
         static void Main(string[] args)
         {
-
             // Start the Program
             CardNewMethod();
         }
