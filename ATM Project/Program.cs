@@ -43,7 +43,7 @@ namespace ATM_Project
 
                     CardGuessMethod(newAcc, newPin);
                 }
-                else if (newAccOrNew == "Existing Account" || newAccOrNew == "Exisiting account"  || newAccOrNew == "existing Account" || newAccOrNew == "new account")
+                else if (newAccOrNew == "Existing Account" || newAccOrNew == "Exisiting account"  || newAccOrNew == "existing Account" || newAccOrNew == "existing account")
                 {
                     CardGuessMethod(newAcc, newPin);
                 }
@@ -124,7 +124,11 @@ namespace ATM_Project
         {
             string functions;
 
-            string[] lines = { "Withdraw", "Transfer", "Balance", "History", "Log out" };
+            List<string> withDraws = new List<string>();
+            withDraws.Add("Withdraw");
+            withDraws.Add("withdraw");
+            withDraws.Add("with draw");
+
 
             while (true)
             {
@@ -133,7 +137,7 @@ namespace ATM_Project
                 Console.Write("Please write here: ");
                 functions = Console.ReadLine();
 
-                if (functions == "Withdraw" || functions == "withdraw" || functions == "with draw")
+                if (withDraws.Contains(functions))
                 {
                     WithdrawMoney();
                     break;
@@ -223,8 +227,15 @@ namespace ATM_Project
         public static void Balance()
         {
             Balance balance = new Balance();
+            int balance_Full = 0;
 
-            Console.WriteLine("You have $" + balance.BalanceFull() + "!");
+            if(balance._isExecuted == false)
+            {
+                balance_Full = balance.BalanceFull();
+                balance._isExecuted = true;
+            }
+
+            Console.WriteLine("You have $" + balance_Full + "!");
 
             MethodsBank();
         }
